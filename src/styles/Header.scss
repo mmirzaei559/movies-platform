@@ -1,0 +1,48 @@
+@import "Variables";
+@import "Mixins";
+
+header {
+  @include full-width;
+  background-color: var(--primary);
+  position: fixed;
+  z-index: 9999;
+}
+
+header .inner-content {
+  @include flex-justify-content-sb;
+  align-items: center;
+  padding: 10px 0;
+}
+
+header a {
+  color: var(--secondary);
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+header a:hover {
+  opacity: 0.7;
+}
+
+header .brand a {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+header .nav-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+header .nav-links li {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+header .nav-links li:last-child {
+  margin-right: 0;
+}

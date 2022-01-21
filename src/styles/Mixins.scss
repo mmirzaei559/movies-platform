@@ -1,0 +1,7 @@
+@mixin full-width {
+  width: 100%;
+}
+@mixin flex-justify-content-sb {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap");
+@import "Variables";
+@import "Mixins";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: var(--black);
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.position-absolute {
+  position: absolute;
+  left: 0;
+}
+
+video {
+  @include full-width;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: var(--primary);
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  border: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  line-height: 1.1;
+}
+
+.btn:hover {
+  background-color: #1aa762;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Content */
+.add-content {
+  @include full-width;
+  @extend .position-absolute;
+  margin: 0 auto;
+  background-color: var(--black);
+  top: 75%;
+  padding-bottom: 100px;
+}
+
+.watch-later-box .add-content {
+  top: 5%;
+}
+.watch-later-box h2 {
+  @extend .position-absolute;
+  color: white;
+  top: 10%;
+}
+
+.add-content .input-wrapper input {
+  @include full-width;
+  padding: 10px;
+  border-radius: 0;
+  border: none;
+  color: var(--white);
+  font-size: 1.25rem;
+}
+
+.results {
+  @include full-width;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.results li {
+  list-style: none;
+  position: relative;
+  height: 430px;
+  margin: 15px;
+  width: 320px;
+  box-shadow: 0 0 17px #404040;
+}
+
+.result-card {
+  @include full-width;
+  margin-bottom: 20px;
+  height: 100%;
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.result-card .poster-wrapper img,
+.filler-poster {
+  @include full-width;
+  background-color: #dbdada;
+  margin-right: 15px;
+  display: block;
+  color: transparent;
+  height: 370px;
+}
+
+.result-card .info {
+  @include flex-justify-content-sb;
+  flex-direction: column;
+}
+
+.result-card .info .title {
+  @include full-width;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 20px;
+  white-space: nowrap;
+  color: var(--secondary);
+  padding: 0 5px;
+  font-size: 14px;
+  margin: 2px 0 0 0;
+}
+
+.result-card .info .release-date {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.result-card .controls button {
+  margin-right: 10px;
+}
+
+.watch-later-btn-box {
+  @include full-width;
+  position: relative;
+  height: 50px;
+
+  .wrapper {
+    @include full-width;
+    @include flex-justify-content-sb;
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+    align-items: self-end;
+    padding: 0 5px;
+    height: 24px;
+  }
+
+  .wrapper .favorite-movie-star {
+    cursor: pointer;
+  }
+
+  .btn {
+    height: 25px;
+    top: 4px;
+    padding: 0;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    transform: translateY(0px);
+    transition: 0.3s linear;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    color: #eee;
+    margin: 0;
+    box-shadow: 0 2px 12px var(--tertiary);
+    border: none;
+    border-radius: 0;
+  }
+
+  .btn-watch-later {
+    margin-left: auto;
+  }
+
+  .btn:hover {
+    transform: translateY(-6px);
+    background: var(--tertiary);
+  }
+
+  .btn span {
+    font-family: 'Source Sans Pro', cursive;
+    transition: transform 0.3s;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    margin: 0;
+  }
+
+  .btn .watch-later, .clock {
+    background: #333;
+    border: 0;
+    margin: 0;
+  }
+
+  .btn .watch-later {
+    transform: translateX(0%);
+  }
+
+  .btn .clock {
+    @include full-width;
+    @extend .position-absolute;
+    height: 100%;
+    transform: translateX(-100%);
+    z-index: 1;
+    top: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tertiary);
+  }
+
+  .btn .buy {
+    z-index: 3;
+    font-weight: bolder;
+  }
+
+  .btn:hover .watch-later {
+    transform: translateX(-110%);
+  }
+
+  .btn:hover .clock {
+    transform: translateX(0%);
+  }
+}
