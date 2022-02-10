@@ -5,7 +5,7 @@ import { createMemoryHistory } from 'history';
 import {Provider} from 'react-redux';
 import store from '../../redux/store/store';
 
-it('routes to watch later page ', async () => {
+it('routes to home page ', async () => {
     const history = createMemoryHistory();
     history.push = jest.fn();
     const { getByText } = render(
