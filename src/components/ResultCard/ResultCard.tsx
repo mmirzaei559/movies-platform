@@ -3,12 +3,12 @@ import {addMovieToWatchLater} from "../../redux/actions/movieActions";
 import {useDispatch, useSelector} from "react-redux";
 import Movie from "../../interfaces/movie";
 import {RootState} from "../../redux/reducers";
+import movie from "../../interfaces/movie";
 
 interface Props {
     movie: Movie
 }
 export const ResultCard: React.FC<Props> = ({movie}) => {
-    // @ts-ignore
     let moviesInWatchLaterList = useSelector((state: RootState) => state.selectedMovies.WatchLaterList);
     const dispatch = useDispatch();
     let storedMoviesInWatchLater = moviesInWatchLaterList.find((o: Movie) => o.id === movie.id);

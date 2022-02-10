@@ -1,21 +1,40 @@
 import React from "react";
-import {render, act, fireEvent} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
+import userEvent from '@testing-library/user-event';
+import {Provider} from 'react-redux';
+import store from '../../redux/store/store';
+import {MemoryRouter} from 'react-router-dom';
 import {SearchInput} from "./SearchInput";
 
-describe ("SearchInput Component", ()=> {
-    it('rendered SearchInput', async ()=>{
-        const {getByTestId} = render(<SearchInput onChange={onchange} value=""/>);
+describe("SearchInput Component", () => {
+    test('rendered SearchInput', async () => {
+        const {getByTestId} = render(
+            <Provider store={store}>
+                <MemoryRouter>
+                    <SearchInput/>;
+                </MemoryRouter>
+            </Provider>
+        );
         const input = getByTestId("searchMovies");
-        await  expect(input).toBeTruthy();
+        await expect(input).toBeTruthy();
     });
-    it('Should change SearchInput value', async () => {
-       await act(async ()=>{
-            const {getByTestId} = render(<SearchInput onChange={onchange} value=""/>);
-            const input = getByTestId("searchMovies");
-            await fireEvent.change(input, {target: {value: ""}});
-            // @ts-ignore
-            expect(input.value).toBe("");
-        })
+
+    test('Input change value', () => {
+        render(
+            <Provider store={store}>
+                <MemoryRouter>
+                    <SearchInput/>;
+                </MemoryRouter>
+            </Provider>
+        );
+        const inputSearch = screen.getByTestId('searchMovies');
+        userEvent.type(inputSearch, 'girls');
+        expect(inputSearch).toHaveValue('girls');
     });
+
+
+    //TODO test API call
+
+    //TODO test Redux
 })
 

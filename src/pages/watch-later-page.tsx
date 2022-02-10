@@ -3,10 +3,10 @@ import IPage from '../interfaces/page';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {MovieCard} from "../components/MovieCard/MovieCard";
 import {useSelector} from "react-redux";
+import {RootState} from "../redux/reducers";
 
 const WatchLaterPage: React.FunctionComponent<IPage & RouteComponentProps<any>> = props => {
-    // @ts-ignore
-    const movies = useSelector((state) => state.selectedMovies.WatchLaterList);
+    const movies = useSelector((state:RootState) => state.selectedMovies.WatchLaterList);
     return (
         <div>
             <div className="container watch-later-box">
